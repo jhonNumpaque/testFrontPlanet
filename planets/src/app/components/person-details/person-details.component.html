@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="col-6">
+    <div class="container-fluid">
+      <button class="btn btn-sm btn-primary" (click)="viewListPersons()"><i class="bi bi-arrow-left"></i></button>
+      <h3 class="text-center mt-5 mb-5">Detalles de la persona {{ this.person.name }}</h3>
+      <div class="container">
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Nombres:</label>
+          <label class="col-form-label col-8">{{ this.person.name }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Document:</label>
+          <label class="col-form-label col-8">{{ this.person.document }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Genero:</label>
+          <label class="col-form-label col-8">{{ this.person.gender }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Edad:</label>
+          <label class="col-form-label col-8">{{ this.person.age }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Peso:</label>
+          <label class="col-form-label col-8">{{ this.person.weight }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Altura:</label>
+          <label class="col-form-label col-8">{{ this.person.height }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Fecha nacimiento:</label>
+          <label class="col-form-label col-8">{{ this.person.birthdate }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Vistas:</label>
+          <label class="col-form-label col-8">{{ this.person.views }}</label>
+        </div>
+        <div class="form-group row p-2">
+          <label class="col-form-label col-4">Planeta:</label>
+          <label class="col-form-label col-8">{{ this.person.planet.name }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+<div class="container-fluid">
+  <h3 class="text-center mt-5 mb-5">Registro de personas</h3>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Nombres:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+          />
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">El nombre es requerido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Documento:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="document"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['document'].errors }"
+          />
+          <div *ngIf="submitted && f['document'].errors" class="invalid-feedback">
+            <div *ngIf="f['document'].errors['required']">El documento es requerido</div>
+            <div *ngIf="f['document'].errors['pattern']">El documento ingresado no es valido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Genero:</label>
+        <div class="col-8">
+          <select
+            formControlName="gender"
+            class="form-control"
+            (change)="changeGender($event)"
+            [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"
+          >
+            <option value="">Seleccione un genero</option>
+            <option *ngFor="let gender of Genders">{{ gender }}</option>
+          </select>
+          <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
+            <div *ngIf="f['gender'].errors['required']">El genero es requerido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Edad:</label>
+        <div class="col-8">
+          <input
+            type="number"
+            formControlName="age"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['age'].errors }"
+          />
+          <div *ngIf="submitted && f['age'].errors" class="invalid-feedback">
+            <div *ngIf="f['age'].errors['required']">La edad es requerida</div>
+            <div *ngIf="f['age'].errors['pattern']">La edad ingresada no es valido</div>
+            <div *ngIf="f['age'].errors['minLength']">
+              La edad debe ser al menos 1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Peso:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="weight"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['weight'].errors }"
+          />
+          <div *ngIf="submitted && f['weight'].errors" class="invalid-feedback">
+            <div *ngIf="f['weight'].errors['required']">El peso es requerida</div>
+            <div *ngIf="f['weight'].errors['pattern']">El peso ingresado no es valido</div>
+            <div *ngIf="f['weight'].errors['minLength']">
+              El peso debe ser al menos 1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Altura:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="height"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['height'].errors }"
+          />
+          <div *ngIf="submitted && f['height'].errors" class="invalid-feedback">
+            <div *ngIf="f['height'].errors['required']">La altura es requerida</div>
+            <div *ngIf="f['height'].errors['pattern']">La altura ingresado no es valida</div>
+            <div *ngIf="f['height'].errors['minLength']">
+              La altura debe ser al menos 1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Fecha nacimiento:</label>
+        <div class="col-8">
+          <input
+            type="date"
+            formControlName="birthdate"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['birthdate'].errors }"
+          />
+          <div *ngIf="submitted && f['birthdate'].errors" class="invalid-feedback">
+            <div *ngIf="f['birthdate'].errors['required']">La fecha de nacimiento es requerida</div>
+            <div *ngIf="f['birthdate'].errors['pattern']">La fecha de nacimiento no es valida</div>
+            <div *ngIf="f['birthdate'].errors['minLength']">
+              La fecha de nacimiento debe ser al menos 1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Planeta:</label>
+        <div class="col-8">
+          <select
+            formControlName="planet"
+            class="form-control"
+            (change)="changePlanet($event)"
+            [ngClass]="{ 'is-invalid': submitted && f['planetId'].errors }"
+          >
+            <option value="">Seleccione un planeta</option>
+            <option *ngFor="let planet of Planets" value="{{ planet.id }}">{{ planet.name }}</option>
+          </select>
+          <div *ngIf="submitted && f['planet'].errors" class="invalid-feedback">
+            <div *ngIf="f['planet'].errors['required']">El genero es requerido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2 col-lg-3">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i>
+            Registrar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

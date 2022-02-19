@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <h3 class="text-center mt-5 mb-5">Listado de planetas</h3>
+  <div class="d-flex flex-row-reverse bd-highlight mb-2">
+    <div class="p-2 bd-highlight">
+      <select (change)="onTableSizeChange($event)" class="custom-select">
+        <option *ngFor="let size of tableSizes" [ngValue]="size" [value]="size" [selected]="tableSize == size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Diametro</th>
+        <th>Perido <br/> de Rotación</th>
+        <th>Terreno</th>
+        <th>Clima</th>
+        <th>Vistas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let planet of Planets
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+        [class.active]="i == currentIndex"
+      >
+        <th scope="row">
+          <a href="planets/{{ planet.id }}">
+            {{ planet.name }}
+          </a>
+        </th>
+        <td>{{ planet.diameter }}</td>
+        <td>{{ planet.rotationPeriod }}</td>
+        <td>{{ planet.ground }}</td>
+        <td>{{ planet.weather }}</td>
+        <td>{{ planet.views }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Ant"
+      nextLabel="Sig"
+      (pageChange)="onTableDataChange($event)"
+      (pageBoundsCorrection)="onTableDataChange($event)"
+      [responsive]="true"
+    >
+    </pagination-controls>
+  </div>
+</div>

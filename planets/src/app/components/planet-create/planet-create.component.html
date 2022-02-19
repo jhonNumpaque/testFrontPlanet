@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <h3 class="text-center mt-5 mb-5">Registro de planetas</h3>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Nombre:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+          />
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">El nombre es requerido</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Diametro:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="diameter"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['diameter'].errors }"
+          />
+          <div *ngIf="submitted && f['diameter'].errors" class="invalid-feedback">
+            <div *ngIf="f['diameter'].errors['required']">
+              El diametro es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Terreno:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="ground"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['ground'].errors }"
+          />
+          <div *ngIf="submitted && f['ground'].errors" class="invalid-feedback">
+            <div *ngIf="f['ground'].errors['required']">
+              El terreno es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Clima:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="weather"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['weather'].errors }"
+          />
+          <div *ngIf="submitted && f['weather'].errors" class="invalid-feedback">
+            <div *ngIf="f['weather'].errors['required']">
+              El clima es requerido
+            </div>
+            <div *ngIf="f['weather'].errors['minLength']">
+              El clima debe tener al menos 2 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label class="col-form-label col-4">Periodo de rotación:</label>
+        <div class="col-8">
+          <input
+            type="text"
+            formControlName="rotationPeriod"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['rotationPeriod'].errors }"
+          />
+          <div *ngIf="submitted && f['rotationPeriod'].errors" class="invalid-feedback">
+            <div *ngIf="f['rotationPeriod'].errors['required']">
+              El periodo de rotación es requerido
+            </div>
+            <div *ngIf="f['rotationPeriod'].errors['minLength']">
+              El periodo de rotación debe tener al menos 6 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2 col-lg-3">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i>
+            Registrar
+          </button>
+        </div>
+        <div class="col-sm-3">
+          <button
+            type="button"
+            (click)="onReset()"
+            class="btn btn-warning float-right"
+          >
+            <i class="bi bi-arrow-clockwise"></i>
+            Reset
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
